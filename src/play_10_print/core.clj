@@ -21,9 +21,11 @@
 
 (defn draw-state
   [[x y]]
-  (if (> 0.5 (q/random 1))
-    (q/line x y (+ x scale) (+ y scale))
-    (q/line x (+ y scale) (+ x scale) y)))
+  (if (>= y (q/height))
+    (q/no-loop)
+    (if (> 0.5 (q/random 1))
+      (q/line x y (+ x scale) (+ y scale))
+      (q/line x (+ y scale) (+ x scale) y))))
 
 
 (q/defsketch play-10-print
